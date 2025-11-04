@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jonathan Odoh - Software Engineer & Blockchain Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-slate-950 text-white overflow-x-hidden">
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="fixed inset-0 bg-slate-950 z-50 flex items-center justify-center">
+        <div class="relative">
+            <div class="loading-logo text-6xl font-bold">
+                <span class="logo-j">J</span><span class="logo-o">O</span>
+            </div>
+            <div class="absolute inset-0 loading-glow"></div>
+            <div class="loading-bar"></div>
+        </div>
+    </div>
+
+    <!-- Particle Background Container -->
+    <canvas id="particle-canvas" class="fixed top-0 left-0 w-full h-full z-0"></canvas>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 w-full z-40 backdrop-blur-md bg-slate-950/50 border-b border-purple-500/10 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="logo-nav text-2xl font-bold">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">JO</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-sm font-medium hover:text-purple-400 transition">Home</a>
+                    <a href="#about" class="nav-link text-sm font-medium hover:text-purple-400 transition">About</a>
+                    <a href="#skills" class="nav-link text-sm font-medium hover:text-purple-400 transition">Skills</a>
+                    <a href="#projects" class="nav-link text-sm font-medium hover:text-purple-400 transition">Projects</a>
+                    <a href="#contact" class="nav-link text-sm font-medium hover:text-purple-400 transition">Contact</a>
+                </div>
+                <button id="menu-btn" class="md:hidden text-purple-400">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed top-16 right-0 w-full bg-slate-950/95 backdrop-blur-md hidden md:hidden z-30 border-b border-purple-500/10">
+        <div class="flex flex-col space-y-4 p-4">
+            <a href="#home" class="nav-link text-sm font-medium hover:text-purple-400 transition">Home</a>
+            <a href="#about" class="nav-link text-sm font-medium hover:text-purple-400 transition">About</a>
+            <a href="#skills" class="nav-link text-sm font-medium hover:text-purple-400 transition">Skills</a>
+            <a href="#projects" class="nav-link text-sm font-medium hover:text-purple-400 transition">Projects</a>
+            <a href="#contact" class="nav-link text-sm font-medium hover:text-purple-400 transition">Contact</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Floating Background Elements -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="floating-blob blob-1"></div>
+            <div class="floating-blob blob-2"></div>
+            <div class="floating-blob blob-3"></div>
+        </div>
+
+        <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
+            <div class="hero-content">
+                <!-- Animated Introduction -->
+                <div class="mb-6">
+                    <h1 class="hero-title text-5xl md:text-7xl font-bold mb-4">
+                        <span class="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 animate-pulse">
+                            Hi, I'm Jonathan Odoh 👋
+                        </span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-300 mb-2 typewriter">
+                        Software Engineer
+                    </p>
+                    <p class="text-lg md:text-xl text-gray-400 mb-4">
+                        Blockchain Developer • Founder of Monaware Technologies
+                    </p>
+                </div>
+
+                <!-- Description -->
+                <p class="text-gray-400 text-base md:text-lg max-w-2xl mx-auto mb-8 leading-relaxed">
+                    Building scalable, innovative solutions with modern technologies. Passionate about creating powerful tools that solve real-world problems through code, blockchain, and entrepreneurship.
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+                    <a href="#projects" class="px-8 py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 transform hover:scale-105">
+                        View My Work
+                    </a>
+                    <a href="#contact" class="px-8 py-3 border-2 border-purple-400 rounded-lg font-semibold hover:bg-purple-400/10 transition-all duration-300">
+                        Contact Me
+                    </a>
+                </div>
+
+                <!-- Scroll Down Indicator -->
+                <div class="scroll-indicator">
+                    <div class="scroll-mouse">
+                        <div class="scroll-wheel"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="relative py-20 md:py-32 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center">About Me</h2>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Image with Frame -->
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                    <div class="relative bg-slate-950 rounded-lg overflow-hidden">
+                        <div class="w-full h-96 bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center">
+                            <div class="text-center">
+                                <i class="fas fa-user-circle text-8xl text-purple-400/50 mb-4"></i>
+                                <p class="text-gray-400">Jonathan Odoh</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bio Content -->
+                <div class="space-y-6">
+                    <p class="text-gray-300 leading-relaxed">
+                        I'm a passionate Software Engineer and Blockchain Developer based in Abuja, Nigeria. With a strong foundation in full-stack development, I specialize in building scalable applications and decentralized solutions.
+                    </p>
+
+                    <p class="text-gray-300 leading-relaxed">
+                        As the Founder of <span class="text-purple-400 font-semibold">Monaware Technologies</span>, I'm committed to creating innovative tools that empower developers and businesses. I've built several impactful projects including:
+                    </p>
+
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-purple-400 mr-3 mt-1"></i>
+                            <span class="text-gray-300"><strong>ZuriORM</strong> - A lightweight PHP ORM with Laravel-like simplicity</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-purple-400 mr-3 mt-1"></i>
+                            <span class="text-gray-300"><strong>SaaSculpt</strong> - A scalable SaaS boilerplate with modular multi-tenancy</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-purple-400 mr-3 mt-1"></i>
+                            <span class="text-gray-300"><strong>OneLedger</strong> - A decentralized business accounting system on Avalanche</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-purple-400 mr-3 mt-1"></i>
+                            <span class="text-gray-300"><strong>SellGadgets</strong> - A Laravel marketplace for buying and repairing gadgets</span>
+                        </li>
+                    </ul>
+
+                    <p class="text-gray-300 leading-relaxed">
+                        I'm passionate about community building and have actively contributed to developer communities. When I'm not coding, you'll find me exploring new technologies or mentoring aspiring developers.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+                <div class="stat-card text-center">
+                    <div class="stat-number text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+                        <span class="counter" data-target="5">0</span>+
+                    </div>
+                    <p class="text-gray-400 mt-2">Years of Experience</p>
+                </div>
+
+                <div class="stat-card text-center">
+                    <div class="stat-number text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">
+                        <span class="counter" data-target="50">0</span>+
+                    </div>
+                    <p class="text-gray-400 mt-2">Projects Built</p>
+                </div>
+
+                <div class="stat-card text-center">
+                    <div class="stat-number text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-blue-400">
+                        <span class="counter" data-target="10">0</span>+
+                    </div>
+                    <p class="text-gray-400 mt-2">Communities Led</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="relative py-20 md:py-32 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold mb-16 text-center">Skills & Technologies</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Skill Cards -->
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-php text-4xl text-purple-400"></i>
+                    </div>
+                    <h3 class="skill-title">PHP</h3>
+                    <p class="text-gray-400 text-sm">Advanced backend development</p>
+                    <div class="skill-progress">
+                        <div class="progress-bar" style="width: 90%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-laravel text-4xl text-red-400"></i>
+                    </div>
+                    <h3 class="skill-title">Laravel</h3>
+                    <p class="text-gray-400 text-sm">Full-stack web applications</p>
+                    <div class="skill-progress">
+                        <div class="progress-bar" style="width: 95%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-js text-4xl text-yellow-400"></i>
+                    </div>
+                    <h3 class="skill-title">JavaScript/ES6+</h3>
+                    <p class="text-gray-400 text-sm">Frontend & Node.js development</p>
+                    <div class="skill-progress">
+                        <div class="progress-bar" style="width: 88%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-palette text-4xl text-blue-400"></i>
+                    </div>
+                    <h3 class="skill-title">Tailwind CSS</h3>
+                    <p class="text-gray-400 text-sm">Modern responsive design</p>
+                    <div class="skill-progress">
+                        <div class="progress-bar" style="width: 92%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-cube text-4xl text-orange-400"></i>
+                    </div>
+                    <h3 class="skill-title">Blockchain (Avalanche)</h3>
+                    <p class="text-gray-400 text-sm">Smart contracts & Web3</p>
+                    <div class="skill-progress">
+                        <div class="progress-bar" style="width: 85%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-database text-4xl text-green-400"></i>
+                    </div>
+                    <h3 class="skill-title">MySQL & Databases</h3>
+                    <p class="text-gray-400 text-sm">Database design & optimization</p>
+                    <div class="skill-progress">
+                        <div class="progress-bar" style="width: 89%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-plug text-4xl text-indigo-400"></i>
+                    </div>
+                    <h3 class="skill-title">API Design</h3>
+                    <p class="text-gray-400 text-sm">RESTful & GraphQL APIs</p>
+                    <div class="skill-progress">
+                        <div class="progress-bar" style="width: 87%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-git-alt text-4xl text-pink-400"></i>
+                    </div>
+                    <h3 class="skill-title">Git & DevOps</h3>
+                    <p class="text-gray-400 text-sm">Version control & deployment</p>
+                    <div class="skill-progress">
+                        <div class="progress-bar" style="width: 86%"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-react text-4xl text-cyan-400"></i>
+                    </div>
+                    <h3 class="skill-title">React & Vue.js</h3>
+                    <p class="text-gray-400 text-sm">Modern frontend frameworks</p>
+                    <div class="skill-progress">
+                        <div class="progress-bar" style="width: 84%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="relative py-20 md:py-32 px-4">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold mb-16 text-center">Featured Projects</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Project Card 1 -->
+                <div class="project-card group">
+                    <div class="project-image">
+                        <div class="w-full h-64 bg-gradient-to-br from-purple-600/30 to-blue-600/30 flex items-center justify-center">
+                            <i class="fas fa-code text-6xl text-purple-400/50"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="text-2xl font-bold mb-2">ZuriORM</h3>
+                        <p class="text-gray-400 mb-4">A lightweight PHP ORM with Laravel-like simplicity. Designed to make database interactions intuitive and efficient for modern PHP applications.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-badge">PHP</span>
+                            <span class="tech-badge">ORM</span>
+                            <span class="tech-badge">Database</span>
+                        </div>
+                        <a href="#" class="inline-block text-purple-400 hover:text-pink-400 transition font-semibold">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="project-card group">
+                    <div class="project-image">
+                        <div class="w-full h-64 bg-gradient-to-br from-pink-600/30 to-purple-600/30 flex items-center justify-center">
+                            <i class="fas fa-layer-group text-6xl text-pink-400/50"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="text-2xl font-bold mb-2">SaaSculpt</h3>
+                        <p class="text-gray-400 mb-4">A scalable SaaS boilerplate with modular multi-tenancy architecture. Perfect for launching SaaS products with enterprise-grade features.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-badge">Laravel</span>
+                            <span class="tech-badge">SaaS</span>
+                            <span class="tech-badge">Multi-tenant</span>
+                        </div>
+                        <a href="#" class="inline-block text-purple-400 hover:text-pink-400 transition font-semibold">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="project-card group">
+                    <div class="project-image">
+                        <div class="w-full h-64 bg-gradient-to-br from-blue-600/30 to-cyan-600/30 flex items-center justify-center">
+                            <i class="fas fa-link text-6xl text-blue-400/50"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="text-2xl font-bold mb-2">OneLedger</h3>
+                        <p class="text-gray-400 mb-4">A decentralized business accounting system built on Avalanche blockchain. Bringing transparency and security to financial record-keeping.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-badge">Blockchain</span>
+                            <span class="tech-badge">Avalanche</span>
+                            <span class="tech-badge">Smart Contracts</span>
+                        </div>
+                        <a href="#" class="inline-block text-purple-400 hover:text-pink-400 transition font-semibold">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project Card 4 -->
+                <div class="project-card group">
+                    <div class="project-image">
+                        <div class="w-full h-64 bg-gradient-to-br from-orange-600/30 to-red-600/30 flex items-center justify-center">
+                            <i class="fas fa-shopping-cart text-6xl text-orange-400/50"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="text-2xl font-bold mb-2">SellGadgets</h3>
+                        <p class="text-gray-400 mb-4">A Laravel-based marketplace for buying and repairing gadgets. Full-featured e-commerce platform with service booking capabilities.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="tech-badge">Laravel</span>
+                            <span class="tech-badge">E-commerce</span>
+                            <span class="tech-badge">Marketplace</span>
+                        </div>
+                        <a href="#" class="inline-block text-purple-400 hover:text-pink-400 transition font-semibold">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="relative py-20 md:py-32 px-4">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 text-center">Get In Touch</h2>
+            <p class="text-gray-400 text-center mb-12">I'd love to hear from you. Whether you have a project in mind or just want to connect, feel free to reach out!</p>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div>
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <input 
+                                type="text" 
+                                placeholder="Your Name" 
+                                class="w-full px-4 py-3 bg-slate-900/50 border border-purple-400/30 rounded-lg focus:outline-none focus:border-purple-400 transition text-white placeholder-gray-500"
+                                required
+                            >
+                        </div>
+                        <div>
+                            <input 
+                                type="email" 
+                                placeholder="Your Email" 
+                                class="w-full px-4 py-3 bg-slate-900/50 border border-purple-400/30 rounded-lg focus:outline-none focus:border-purple-400 transition text-white placeholder-gray-500"
+                                required
+                            >
+                        </div>
+                        <div>
+                            <input 
+                                type="text" 
+                                placeholder="Subject" 
+                                class="w-full px-4 py-3 bg-slate-900/50 border border-purple-400/30 rounded-lg focus:outline-none focus:border-purple-400 transition text-white placeholder-gray-500"
+                                required
+                            >
+                        </div>
+                        <div>
+                            <textarea 
+                                placeholder="Your Message" 
+                                rows="5"
+                                class="w-full px-4 py-3 bg-slate-900/50 border border-purple-400/30 rounded-lg focus:outline-none focus:border-purple-400 transition text-white placeholder-gray-500"
+                                required
+                            ></textarea>
+                        </div>
+                        <button 
+                            type="submit"
+                            class="w-full px-8 py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg font-semibold hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 transform hover:scale-105"
+                        >
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="space-y-8">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope text-2xl text-purple-400"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold mb-2">Email</h3>
+                            <a href="mailto:jonathan.odoh.dev@gmail.com" class="text-gray-400 hover:text-purple-400 transition">
+                                jonathan.odoh.dev@gmail.com
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt text-2xl text-purple-400"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold mb-2">Location</h3>
+                            <p class="text-gray-400">Abuja, Nigeria</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h3 class="font-semibold">Follow Me</h3>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/jona-odoh" target="_blank" class="social-link">
+                                <i class="fab fa-github text-2xl"></i>
+                            </a>
+                            <a href="https://linkedin.com" target="_blank" class="social-link">
+                                <i class="fab fa-linkedin text-2xl"></i>
+                            </a>
+                            <a href="https://twitter.com" target="_blank" class="social-link">
+                                <i class="fab fa-twitter text-2xl"></i>
+                            </a>
+                            <a href="#" target="_blank" class="social-link">
+                                <i class="fas fa-globe text-2xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative py-12 px-4 border-t border-purple-500/10">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#home" class="hover:text-purple-400 transition">Home</a></li>
+                        <li><a href="#about" class="hover:text-purple-400 transition">About</a></li>
+                        <li><a href="#projects" class="hover:text-purple-400 transition">Projects</a></li>
+                        <li><a href="#contact" class="hover:text-purple-400 transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4">Social</h3>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="https://github.com/jona-odoh" target="_blank" class="hover:text-purple-400 transition">GitHub</a></li>
+                        <li><a href="https://linkedin.com" target="_blank" class="hover:text-purple-400 transition">LinkedIn</a></li>
+                        <li><a href="https://twitter.com" target="_blank" class="hover:text-purple-400 transition">Twitter</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-4">About</h3>
+                    <p class="text-gray-400 text-sm">
+                        Software Engineer, Blockchain Developer, and Founder of Monaware Technologies.
+                    </p>
+                </div>
+            </div>
+
+            <div class="border-t border-purple-500/10 pt-8 text-center text-gray-400 text-sm">
+                <p>© 2025 Jonathan Odoh — Built with ❤️ and Tailwind CSS</p>
+                <p class="mt-2 text-xs text-gray-500">Powered by GSAP, Tailwind, and pure JavaScript</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="particles.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
